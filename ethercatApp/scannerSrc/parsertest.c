@@ -6,7 +6,7 @@
 #include "classes.h"
 #include "parser.h"
 
-#undef FASLE
+#undef FALSE
 #undef TRUE
 
 typedef enum _CONFIG_CHECK { CONFIG_ERROR=0,  CONFIG_OKAY=1 } CONFIG_CHECK;
