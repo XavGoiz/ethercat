@@ -7,13 +7,15 @@ include $(TOP)/configure/CONFIG
 USR_SYS_LIBS += xml2
 LIBRARY_IOC += ecAsyn 
 
-VERSION=1-5-2dls7
-ETHERLAB=/dls_sw/prod/tools/RHEL6-x86_64/ethercat/$(VERSION)
+#VERSION=1-5-2dls7
+#ETHERLAB=/dls_sw/prod/tools/RHEL6-x86_64/ethercat/$(VERSION)
 
 ecAsyn_SRCS += ecAsyn.cpp gadc.cpp
 ecAsyn_LIBS += asyn scannerlib rtutils 
-ecAsyn_INCLUDES += -I$(ETHERLAB)/src/ethercat-$(subst -,.,$(VERSION))/include
-gadc_INCLUDES += -I$(ETHERLAB)/src/ethercat-$(subst -,.,$(VERSION))/include
+#ecAsyn_INCLUDES += -I$(ETHERLAB)/src/ethercat-$(subst -,.,$(VERSION))/include
+ecAsyn_INCLUDES += -I$(ETHERLAB)/include
+#gadc_INCLUDES += -I$(ETHERLAB)/src/ethercat-$(subst -,.,$(VERSION))/include
+gadc_INCLUDES += -I$(ETHERLAB)/include
 
 INC += gadc.h
 

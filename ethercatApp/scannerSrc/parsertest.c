@@ -6,12 +6,11 @@
 #include "classes.h"
 #include "parser.h"
 
-typedef enum _CONFIG_CHECK { CONFIG_ERROR=0,  CONFIG_OKAY=1 } CONFIG_CHECK;
-/* typedef enum _BOOL { FALSE = 0, TRUE = 1} BOOL; */
+#undef FASLE
+#undef TRUE
 
-typedef int BOOL;
-#define FASLE 0
-#define TRUE 1
+typedef enum _CONFIG_CHECK { CONFIG_ERROR=0,  CONFIG_OKAY=1 } CONFIG_CHECK;
+typedef enum _BOOL { FALSE = 0, TRUE = 1} BOOL;
 
 /* typdef enum _CONFIG_CHECK CONFIG_CHECK; */
 

@@ -26,6 +26,9 @@
 #include "version.h"
 #include "liberror.h"
 
+#undef FALSE
+#undef TRUE
+
 int debug = 1;
 int selftest = 1;
 int simulation = 0;
@@ -34,11 +37,7 @@ int dumplatency = 0;
 // Time to wait for EtherCAT frame to return. Default to 50 us.
 long frame_time_ns = 50000;
 
-/* typedef enum _BOOL { FALSE = 0, TRUE = 1} BOOL; */
-
-typedef int BOOL;
-#define FASLE 0
-#define TRUE 1
+typedef enum _BOOL { FALSE = 0, TRUE = 1} BOOL;
 
 enum { PERIOD_NS = 1000000 };
 #define TIMESPEC2NS(T) ((uint64_t) (T).tv_sec * NSEC_PER_SEC + (T).tv_nsec)
