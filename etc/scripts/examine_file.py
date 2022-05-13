@@ -1,4 +1,4 @@
-#!/bin/env dls-python
+#!/usr/bin/python3
 #
 # script to list ethercat device types available in one file
 
@@ -15,7 +15,7 @@ if builder_dir not in sys.path:
 import ethercat
 
 def usage():
-    print """examine_file.py: print device descriptions in file
+    print("""examine_file.py: print device descriptions in file
 
 Usage:
          %(scriptname)s [-a] file.xml [ file2.xml file3.xml ... ]
@@ -26,7 +26,7 @@ Options:
 
 Example:
       %(scriptname)s ../xml/NI9144.xml 
-""" % dict(scriptname=__file__)
+""" % dict(scriptname=__file__))
     sys.exit(1)
 
 doFilter = True
@@ -53,11 +53,11 @@ if __name__ == "__main__":
         if dev_set and doFilter:
             fset = ethercat.filteredDescriptions(dev_set)
         if fset:
-            print """File: %(name)s
+            print("""File: %(name)s
 Number of entries: %(count)d (Filter: %(filtered)s)
-""" % dict(name = sys.argv[1], count = len(fset), filtered=doFilter)
-            for k in sorted(fset.keys(), key=keyRepr):
-                print "%s rev 0x%08x" % k
+""" % dict(name = sys.argv[1], count = len(fset), filtered=doFilter))
+            for k in sorted(list(fset.keys()), key=keyRepr):
+                print("%s rev 0x%08x" % k)
         else:
             print("File: %(name)s has no descriptions" % dict(
                 name = sys.argv[1]))

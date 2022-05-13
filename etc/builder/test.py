@@ -3,7 +3,7 @@ import sys
 import unittest
 
 class TestEthercatDescriptions(unittest.TestCase):
-    
+
     def setUp(self):
         ethercat.initialise()
     def testContents(self):
@@ -23,7 +23,7 @@ class TestEthercatChain(unittest.TestCase):
         xml = chain1.generateChainXml()
         self.assertTrue( xml )
         self.assertTrue( len(xml) > 0 )
-        
+
 
 if __name__ == "__main__":
     #import sys;sys.argv = ['', 'Test.testName']

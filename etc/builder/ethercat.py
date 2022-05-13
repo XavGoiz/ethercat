@@ -1,4 +1,4 @@
-from __future__ import print_function
+
 import os
 import libxml2
 import sys
@@ -56,7 +56,7 @@ diamondFilter = [
         "EL1124", "EP3314-0002", "EL3602", "NI 9144", "EL9410", "EP2624",
         "EL2124", "EL4134", "EL9510", "EL9512", "EL3202-0010", "EL3104",
         "EL3602-0010", "EL2612", "EL2595", "EL3124", "EL2502", "EL3356-0010",
-        "EKM1101", "ELM3004", "ELM3704-0000"]
+        "EKM1101", "ELM3004", "ELM3704-0000", "EL3012"]
 #The entries in the wiki with these names don't show up in the database
 # EL9011 EL9080 EL9185 ZS2000-3712
 # I23 has an EL2612 that is not in the list of supported modules
@@ -417,7 +417,7 @@ class EthercatChain:
         assert self.dev_descriptions , "device descriptions not populated. should call getDeviceDescriptions"
         o = "<scanner>\n"
         o = o + "<devices>\n"
-        for key, dev_description in self.dev_descriptions.iteritems():
+        for key, dev_description in self.dev_descriptions.items():
             o = o + dev_description.generateDeviceXml()
         o = o + "</devices>\n"
         o = o + self.generateChainXml()
@@ -449,7 +449,7 @@ def filteredDescriptions(dev_descriptions = None,filter = None):
         filter = diamondFilter
     filtered_descriptions = {}
     for key in dev_descriptions:
-        if key in filtered_descriptions.keys():
+        if key in list(filtered_descriptions.keys()):
             print("Duplicate key", key)
             continue
         typename = key[0]
@@ -615,7 +615,7 @@ def getAllDevices():
         xml_dir = os.path.realpath(os.path.join(etc_dir,'xml'))
         for f in i_descriptions.slaveInfoFiles:
             filename = os.path.join(xml_dir, f)
-            for key, dev in getDescriptions(filename).iteritems():
+            for key, dev in getDescriptions(filename).items():
                 typename = key[0]
                 revision = key[1]
                 dev_descriptions[key] = dev
@@ -628,7 +628,7 @@ def getPdoEntryChoices(all_devices):
     global stypes
     if not stypes:
         stypes = []
-        for dev in all_devices.itervalues():
+        for dev in all_devices.values():
             for s in dev.getTypicalDeviceSignals():
                 stypes.append( (s, dev.type, dev.revision) )
         stypes = sorted(stypes, key=lambda s: "%s rev 0x%08x" % (s[1],s[2]) )

@@ -1,4 +1,4 @@
-#!/bin/env dls-python
+#!/usr/bin/python3
 
 from xml.dom.minidom import parse
 import sys
@@ -19,7 +19,7 @@ for device in chain.getElementsByTagName("device"):
     device.setAttribute("type_rev", "%s rev %s" % (type_name, revision))
     device.tagName = "ethercat.EthercatSlave"
     device.setAttribute("master", "ECATM")
-print doc.toxml()
+print(doc.toxml())
 
 
 

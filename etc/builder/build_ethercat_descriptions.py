@@ -17,7 +17,7 @@ def build_descriptions():
     dev_descriptions = dict()
     for f in build_iocbuilder_descriptions.slaveInfoFiles:
         filename = os.path.join(xml_dir, f)
-        for key, dev in ethercat.getDescriptions(filename).iteritems():
+        for key, dev in ethercat.getDescriptions(filename).items():
             typename = key[0]
             revision = key[1]
             dev_descriptions[key] = dev

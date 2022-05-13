@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import threading
 import subprocess
 
@@ -34,4 +35,4 @@ class EthercatScanner():
         if self._ui:
             self._ui.output(text)
         else:
-            print repr(text)
+            print(repr(text))

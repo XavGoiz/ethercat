@@ -2,7 +2,7 @@ from iocbuilder.modules.asyn import Asyn
 from iocbuilder.modules.busy import Busy
 from iocbuilder import Device, IocDataStream, AutoSubstitution
 from iocbuilder.arginfo import makeArgInfo, Simple, Ident, Choice
-from . import ethercat
+import ethercat
 import os
 
 # These devices are used directly, while the others are loaded as
@@ -171,11 +171,11 @@ class GenericADC(Device):
 
     def Initialise_FIRST(self):
         if self.cycle:
-            print 'ADC_Ethercat_Sampler("%(slave_name)s",' % self.__dict__ \
-                  + '%(channel)d,"%(sample)s","%(cycle)s")' % self.__dict__
+            print('ADC_Ethercat_Sampler("%(slave_name)s",' % self.__dict__ \
+                  + '%(channel)d,"%(sample)s","%(cycle)s")' % self.__dict__)
         else:
-            print 'ADC_Ethercat_Sampler("%(slave_name)s",%(channel)d,"%(sample)s")' \
-                  % self.__dict__
+            print('ADC_Ethercat_Sampler("%(slave_name)s",%(channel)d,"%(sample)s")' \
+                  % self.__dict__)
     ArgInfo = makeArgInfo(__init__,
         slave = Ident("ethercat slave", EthercatSlave),
         channel = Simple("channel id number", int),

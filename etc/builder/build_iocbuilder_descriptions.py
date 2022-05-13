@@ -15,6 +15,7 @@ slaveInfoFiles = [
     "Beckhoff EL32xx.xml",
     "Beckhoff EL33xx.xml",
     "Beckhoff EL3xxx.xml",
+    "Beckhoff EL30xx.xml",
     "Beckhoff EL37xx.xml",
     "Beckhoff EL4xxx.xml",
     "Beckhoff EL47xx.xml",
@@ -55,7 +56,7 @@ def build_iocbuilder_descriptions():
     dev_descriptions = dict()
     for f in slaveInfoFiles:
         filename = os.path.join(xml_dir, f)
-        for key, dev in ethercat.ethercat.getDescriptions(filename).iteritems():
+        for key, dev in ethercat.ethercat.getDescriptions(filename).items():
             typename = key[0]
             revision = key[1]
             dev_descriptions[key] = dev
